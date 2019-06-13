@@ -1,6 +1,6 @@
 {
   "name": "axios-pro",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
