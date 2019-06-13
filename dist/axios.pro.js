@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["axiosPro"] = factory();
-	else
-		root["axiosPro"] = factory();
-})(window, function() {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -2406,6 +2397,8 @@ module.exports = {
  * @doc
  *  npm run build && git add -A dist
  *  npm version patch
+ * @doc
+ *  https://juejin.im/post/5b19d65a51882513756f102b
  */
 __webpack_require__(69).polyfill();
 var promiseFinally = __webpack_require__(70);
@@ -7746,4 +7739,4 @@ module.exports = function (instance, config) {
 
 /***/ })
 /******/ ])["default"];
-});
+//# sourceMappingURL=axios.pro.js.map
