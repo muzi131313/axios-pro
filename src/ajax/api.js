@@ -16,8 +16,8 @@ api.get = function (url, params, options) {
   }
   params = params || {}
   return ajax(Object.assign({
-    url,
-    params,
+    url: url,
+    params: params,
     method: 'get'
   }, options))
 }
@@ -32,8 +32,8 @@ api.post = function (url, params, options) {
   options = options || {}
   const data = params || {}
   return ajax(Object.assign({
-    url,
-    data,
+    url: url,
+    data: data,
     method: 'post'
   }, options))
 }
@@ -48,8 +48,8 @@ api.put = function (url, params, options) {
   options = options || {}
   const data = params || {}
   return ajax(Object.assign({
-    url,
-    data,
+    url: url,
+    data: data,
     method: 'put'
   }, options))
 }
@@ -64,8 +64,8 @@ api.del = function (url, params, options) {
   options = options || {}
   params = params || {}
   return ajax(Object.assign({
-    url,
-    params,
+    url: url,
+    params: params,
     method: 'delete'
   }, options))
 }
@@ -80,8 +80,8 @@ api.patch = function (url, params, options) {
   options = options || {}
   const data = params || {}
   return ajax(Object.assign({
-    url,
-    data,
+    url: url,
+    data: data,
     method: 'patch'
   }, options))
 }

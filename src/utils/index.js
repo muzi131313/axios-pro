@@ -7,7 +7,8 @@
  * @param {object} objB
  * @createTime 2019年02月21日16:08:38
  */
-var combine = function(...more) {
+var combine = function() {
+  var more = Array.prototype.slice.call(arguments)
   if (!more) {
     return console.warn('combine() require at least one params')
   }

@@ -25,8 +25,8 @@ module.exports = function (options) {
     options = Object.assign({}, config, options)
 
     var instance = axios.create({
-      baseURL,
-      headers,
+      baseURL: baseURL,
+      headers: headers,
       transformResponse: [
         function(data) {
           return data
