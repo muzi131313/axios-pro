@@ -13,28 +13,30 @@ var promiseFinally = require('promise.prototype.finally')
 var httpPromise = require('./promise')
 var utils = require('./utils')
 
-var axiosPro = {}
-
 promiseFinally.shim()
 
-var install = function (Vue, options) {
-  if (install.installed) {
-    return
-  }
-  install.installed = true
+var getAxiosPro = function() {
+  var axiosPro = {}
 
-  // TODO: 1.区分不同模块
-  // TODO: 2.mapper应该作为参数引入
-  // Object.defineProperties未生效
-  // doc: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties
-  // 注意哦，此处挂载在 Vue 原型的 $api 对象上
-  var api = httpPromise(options)
-  Vue.prototype.$api = api
-  axiosPro.api = api
+  var install = function (Vue, options) {
+    if (install.installed) {
+      return
+    }
+    install.installed = true
+
+    // TODO: 1.区分不同模块
+    // TODO: 2.mapper应该作为参数引入
+    // Object.defineProperties未生效
+    // doc: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties
+    // 注意哦，此处挂载在 Vue 原型的 $api 对象上
+    var api = httpPromise(options)
+    axiosPro.api = api
+    Vue.prototype.$api = api
+  }
+
+  axiosPro.install = install
+  axiosPro.combine = utils.combine
+  return axiosPro
 }
 
-axiosPro.install = install
-axiosPro.combine = utils.combine
-
-module.exports = axiosPro
-export default axiosPro
+export default getAxiosPro()
