@@ -2559,6 +2559,9 @@ module.exports = {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 /**
  * @file index.js
  * @desc {{description}}{{http暴露接口}}
@@ -2598,6 +2601,7 @@ axiosPro.install = install;
 axiosPro.combine = utils.combine;
 
 module.exports = axiosPro;
+exports.default = axiosPro;
 
 /***/ }),
 /* 71 */

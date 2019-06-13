@@ -37,3 +37,4 @@ axiosPro.install = install
 axiosPro.combine = utils.combine
 
 module.exports = axiosPro
+export default axiosPro
