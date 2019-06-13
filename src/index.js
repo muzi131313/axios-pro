@@ -7,15 +7,15 @@
  *  npm version patch
  */
 require('es6-promise').polyfill()
-const promiseFinally = require('promise.prototype.finally')
-const httpPromise = require('./promise')
-const utils = require('./utils')
+var promiseFinally = require('promise.prototype.finally')
+var httpPromise = require('./promise')
+var utils = require('./utils')
 
-const axiosPro = {}
+var axiosPro = {}
 
 promiseFinally.shim()
 
-const install = function (Vue, options) {
+var install = function (Vue, options) {
   if (install.installed) {
     return
   }
