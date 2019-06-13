@@ -5363,10 +5363,8 @@ var initHttpPromise = function initHttpPromise(mappers, config) {
 
 module.exports = function promise(options) {
   options = options || {};
-  var _options = options,
-      mappers = _options.mappers,
-      config = _options.config;
-
+  var mappers = options.mappers;
+  var config = options.config;
   return initHttpPromise(mappers, config);
 };
 
@@ -5524,13 +5522,12 @@ var api = {};
  * @param params object 请求参数
  * @createTime 2018年11月04日00:15:02
  */
-api.get = function (url, params) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {
+api.get = function (url, params, options) {
+  options = options || {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
   };
-
   params = params || {};
   return ajax((0, _assign2.default)({
     url: url,
@@ -5545,9 +5542,8 @@ api.get = function (url, params) {
  * @param params object 请求参数
  * @createTime 2018年11月04日00:15:02
  */
-api.post = function (url, params) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
+api.post = function (url, params, options) {
+  options = options || {};
   var data = params || {};
   return ajax((0, _assign2.default)({
     url: url,
@@ -5562,9 +5558,8 @@ api.post = function (url, params) {
  * @param params object 请求参数
  * @createTime 2018年11月04日00:15:02
  */
-api.put = function (url, params) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
+api.put = function (url, params, options) {
+  options = options || {};
   var data = params || {};
   return ajax((0, _assign2.default)({
     url: url,
@@ -5579,9 +5574,8 @@ api.put = function (url, params) {
  * @param params object 请求参数
  * @createTime 2018年11月04日00:15:02
  */
-api.del = function (url, params) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
+api.del = function (url, params, options) {
+  options = options || {};
   params = params || {};
   return ajax((0, _assign2.default)({
     url: url,
@@ -5596,9 +5590,8 @@ api.del = function (url, params) {
  * @param params object 请求参数
  * @createTime 2018年11月04日00:15:02
  */
-api.patch = function (url, params) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
+api.patch = function (url, params, options) {
+  options = options || {};
   var data = params || {};
   return ajax((0, _assign2.default)({
     url: url,
@@ -5717,10 +5710,9 @@ var parseData = function parseData(res) {
 // (type, url, param, opts)
 module.exports = function (options) {
   return new _promise2.default(function (resolve, reject) {
-    var baseURL = config.baseURL,
-        headers = config.headers;
+    var baseURL = config.baseURL;
+    var headers = config.headers;
     // support override headers from methods
-
     options = (0, _assign2.default)({}, config, options);
 
     var instance = axios.create({
