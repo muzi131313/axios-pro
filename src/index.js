@@ -5,6 +5,8 @@
  * @doc
  *  npm run build && git add -A dist
  *  npm version patch
+ * @doc
+ *  https://juejin.im/post/5b19d65a51882513756f102b
  */
 require('es6-promise').polyfill()
 var promiseFinally = require('promise.prototype.finally')

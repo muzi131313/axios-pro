@@ -13,8 +13,9 @@ module.exports = {
     filename: '[name].js',
     libraryExport: 'default',
     library: 'axiosPro',
-    libraryTarget: 'umd'
+    libraryTarget: 'commonjs2'
   },
+  devtool: 'source-map',
   optimization: {
     minimize: true,
     minimizer: [
