@@ -6,6 +6,7 @@
  *  npm run build && git add -A dist
  *  npm version patch
  */
+require('es6-promise').polyfill()
 const promiseFinally = require('promise.prototype.finally')
 const httpPromise = require('./promise')
 const utils = require('./utils')
