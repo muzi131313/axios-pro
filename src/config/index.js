@@ -30,7 +30,7 @@ module.exports = {
      */
     data: function (data) {
       data = data || {}
-      const code = data.code
+      var code = data.code
       // 根据返回的code值来做不同的处理（和后端约定）
       switch (code) {
         case '':

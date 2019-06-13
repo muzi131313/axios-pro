@@ -14,8 +14,8 @@ var transURL = function (url, urlParams) {
 
 var initHttpPromise = function (mappers, config) {
   return Object.keys(mappers).reduce(function (current, now) {
-    const request = mappers[now]
-    const httpPromise = current
+    var request = mappers[now]
+    var httpPromise = current
     switch (now) {
       case 'gets':
         Object.keys(request).forEach(function (reqKey) {
@@ -76,6 +76,7 @@ var initHttpPromise = function (mappers, config) {
 
 module.exports = function promise(options) {
   options = options || {}
-  const { mappers, config } = options
+  var mappers = options.mappers
+  var config = options.config
   return initHttpPromise(mappers, config)
 }

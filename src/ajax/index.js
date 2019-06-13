@@ -18,17 +18,20 @@ var parseData = function (res) {
 
 // (type, url, param, opts)
 module.exports = function (options) {
-  return new Promise((resolve, reject) => {
-    var { baseURL, headers } = config
+  return new Promise(function(resolve, reject) {
+    var baseURL = config.baseURL
+    var headers = config.headers
     // support override headers from methods
     options = Object.assign({}, config, options)
 
     var instance = axios.create({
       baseURL,
       headers,
-      transformResponse: [ data => {
-        return data
-      } ]
+      transformResponse: [
+        function(data) {
+          return data
+        }
+      ]
     })
 
     // request interceptor
@@ -39,15 +42,15 @@ module.exports = function (options) {
 
     // 请求处理
     return instance(options)
-      .then(res => {
-        const data = parseData(res)
+      .then(function(res) {
+        var data = parseData(res)
         resolve(data)
         return res
       })
-      .catch(error => {
+      .catch(function(error) {
         reject(error)
       })
-      .finally(() => {
+      .finally(function() {
         if (options.handlers
           && options.handlers.loading
           && options.handlers.loading.open) {

@@ -15,7 +15,7 @@ const axiosPro = {}
 
 promiseFinally.shim()
 
-const install = (Vue, options) => {
+const install = function (Vue, options) {
   if (install.installed) {
     return
   }
