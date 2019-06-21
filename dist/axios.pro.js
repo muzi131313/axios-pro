@@ -5881,8 +5881,9 @@ module.exports = function (options) {
     var baseURL = config.baseURL;
     var headers = config.headers;
     // support override headers from methods
-    options.handlers = (0, _assign2.default)({}, config.handlers, options.handlers);
+    var baseHandlers = (0, _assign2.default)({}, config.handlers, options.handlers);
     options = (0, _assign2.default)({}, config, options);
+    options.handlers = baseHandlers;
 
     var instance = axios.create({
       baseURL: baseURL,
@@ -7738,6 +7739,13 @@ module.exports = function (instance, config) {
     // IE9时response.data是undefined，因此需要使用response.request.responseText(Stringify后的字符串)
     if (!response.data) {
       data = response.request.responseText;
+      try {
+        // ie下返回data为[object String]类型
+        data = data ? JSON.parse(data) : data;
+      } catch (e) {
+        console.error('interceptors response parse data exits error');
+        console.error(e);
+      }
     } else {
       data = response.data;
     }
