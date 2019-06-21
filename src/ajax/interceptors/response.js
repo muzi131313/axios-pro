@@ -4,32 +4,40 @@
  * @createTime 2018年11月03日23:16:47
  */
 module.exports = function (instance, config) {
+  var objType = function (obj) {
+    return Object.prototype.toString.call(obj)
+      .replace('[object ', '')
+      .replace(']', '')
+      .toLowerCase()
+  }
   // response 拦截器
   instance.interceptors.response.use(
     function (response) {
-      var data
       // IE9时response.data是undefined，因此需要使用response.request.responseText(Stringify后的字符串)
+      var data
       if (!response.data) {
         data = response.request.responseText
-        try {
-          // ie下返回data为[object String]类型
-          data = data ? JSON.parse(data) : data
-        }
-        catch (e) {
-          console.error('interceptors response parse data exits error')
-          console.error(e)
-        }
       }
       else {
         data = response.data
       }
 
+      var oldDataType = objType(data)
+      var oldData = data
+      try {
+        // ie下返回data为[object String]类型
+        data = data && oldDataType === 'string' ? JSON.parse(data) : data
+      }
+      catch (e) {
+        data = oldData
+        console.error('interceptors response parse data exits error')
+        console.error(e)
+      }
+
       // 文件流
       var fileTypes = ['string', 'blob']
-      var dataType = Object.prototype.toString.call(data)
-        .replace('[object ', '')
-        .replace(']', '')
-        .toLowerCase()
+      var dataType = objType(data)
+
       if (~fileTypes.indexOf(dataType)) {
         return {
           data,
@@ -37,7 +45,6 @@ module.exports = function (instance, config) {
           fileName: response.headers['filename']
         }
       }
-
       config.handlers && config.handlers.data && config.handlers.data(data)
 
       return data
