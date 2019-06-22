@@ -21,7 +21,10 @@ var initHttpPromise = function (mappers, config) {
         Object.keys(request).forEach(function (reqKey) {
           var url = request[reqKey]
           httpPromise[reqKey] = function (params, options, urlParams) {
-            options = options || config
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
+            options = Object.assign({}, config, options)
+            options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return get(requestURL, params, options)
           }
@@ -31,7 +34,10 @@ var initHttpPromise = function (mappers, config) {
         Object.keys(request).forEach(function (reqKey) {
           var url = request[reqKey]
           httpPromise[reqKey] = function (params, options, urlParams) {
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
             options = options || config
+            options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return post(requestURL, params, options)
           }
@@ -41,7 +47,10 @@ var initHttpPromise = function (mappers, config) {
         Object.keys(request).forEach(function(reqKey) {
           var url = request[reqKey]
           httpPromise[reqKey] = function (params, options, urlParams) {
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
             options = options || config
+            options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return put(requestURL, params, options)
           }
@@ -51,7 +60,10 @@ var initHttpPromise = function (mappers, config) {
         Object.keys(request).forEach(function (reqKey) {
           var url = request[reqKey]
           httpPromise[reqKey] = function (params, options, urlParams) {
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
             options = options || config
+            options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return del(requestURL, params, options)
           }
@@ -61,7 +73,10 @@ var initHttpPromise = function (mappers, config) {
         Object.keys(request).forEach(function (reqKey) {
           var url = request[reqKey]
           httpPromise[reqKey] = function (params, options, urlParams) {
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
             options = options || config
+            options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return patch(requestURL, params, options)
           }

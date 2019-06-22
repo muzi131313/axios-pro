@@ -22,9 +22,10 @@ module.exports = function (options) {
     var baseURL = config.baseURL
     var headers = config.headers
     // support override headers from methods
-    var baseHandlers = Object.assign({}, config.handlers, options.handlers)
-    options = Object.assign({}, config, options)
+    var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
+    options = Object.assign({}, config || {}, options || {})
     options.handlers = baseHandlers
+    // console.info('baseHandlers: ' + JSON.stringify(baseHandlers))
 
     var instance = axios.create({
       baseURL: baseURL,

@@ -9,7 +9,7 @@ module.exports = {
   // 参数
   data: {},
   // 设置超时时间
-  timeout: 10e3,
+  timeout: 30e3,
   // 携带凭证
   withCredentials: false,
   // 返回数据类型
