@@ -47,4 +47,4 @@ var getAxiosPro = function() {
   return axiosPro
 }
 
-export default getAxiosPro()
+module.exports = getAxiosPro()
