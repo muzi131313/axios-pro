@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const path = require('path')
 
 module.exports = {
+  mode: 'production', // 告诉webpack使用production模式的内置优化,
   entry: {
     'axios.pro': './src/index.js',
     'axios.pro.min': './src/index.js'
@@ -15,10 +16,8 @@ module.exports = {
     libraryExport: 'default',
     library: 'axiosPro', // 指定类库名,主要用于直接引用的方式(比如使用script 标签)
     libraryTarget: 'umd', // 定义打包方式Universal Module Definition,同时支持在CommonJS、AMD和全局变量使用
-    globalObject: 'this', // 定义全局变量,兼容node和浏览器运行，避免出现"window is not defined"的情况
-    umdNamedDefine: true
+    globalObject: 'this' // 定义全局变量,兼容node和浏览器运行，避免出现"window is not defined"的情况
   },
-  mode: 'production', // 告诉webpack使用production模式的内置优化,
   devtool: 'source-map', // 开启sourceMap，方便调试
   optimization: {
     minimize: true,
@@ -51,7 +50,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': process.env.NODE_ENV
+      'process.env.NODE_ENV': process.env.NODE_ENV
     }),
     new CleanWebpackPlugin([
       'dist'

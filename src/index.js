@@ -16,7 +16,9 @@ var utils = require('./utils')
 promiseFinally.shim()
 
 var getAxiosPro = function() {
-  var axiosPro = {}
+  var axiosPro = {
+    api: {}
+  }
 
   var install = function (Vue, options) {
     if (install.installed) {
@@ -32,6 +34,12 @@ var getAxiosPro = function() {
     var api = httpPromise(options)
     axiosPro.api = api
     Vue.prototype.$api = api
+  }
+
+  // node environments
+  // 支持服务端使用
+  axiosPro.inject = options => {
+    axiosPro.api = httpPromise(options)
   }
 
   axiosPro.install = install
