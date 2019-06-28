@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("axiosPro", [], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
 		exports["axiosPro"] = factory();
 	else
@@ -2120,6 +2120,7 @@ function getDefaultAdapter() {
     // For browsers use XHR adapter
     adapter = __webpack_require__(65);
   }
+  console.log('getDefaultAdapter() adapter: ', adapter)
   return adapter;
 }
 
@@ -2580,7 +2581,9 @@ var utils = __webpack_require__(69);
 promiseFinally.shim();
 
 var getAxiosPro = function getAxiosPro() {
-  var axiosPro = {};
+  var axiosPro = {
+    api: {}
+  };
 
   var install = function install(Vue, options) {
     if (install.installed) {
@@ -2596,6 +2599,15 @@ var getAxiosPro = function getAxiosPro() {
     var api = httpPromise(options);
     axiosPro.api = api;
     Vue.prototype.$api = api;
+  };
+
+  console.info('getAxiosPro');
+  // node environments
+  // 支持服务端使用
+  axiosPro.inject = function (options) {
+    axiosPro.api = httpPromise(options);
+    console.info('inject pro ');
+    console.info(axiosPro.api);
   };
 
   axiosPro.install = install;
