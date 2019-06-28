@@ -2560,9 +2560,6 @@ module.exports = {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 /**
  * @file index.js
  * @desc {{description}}{{http暴露接口}}
@@ -2601,13 +2598,10 @@ var getAxiosPro = function getAxiosPro() {
     Vue.prototype.$api = api;
   };
 
-  console.info('getAxiosPro');
   // node environments
   // 支持服务端使用
   axiosPro.inject = function (options) {
     axiosPro.api = httpPromise(options);
-    console.info('inject pro ');
-    console.info(axiosPro.api);
   };
 
   axiosPro.install = install;
@@ -2615,7 +2609,7 @@ var getAxiosPro = function getAxiosPro() {
   return axiosPro;
 };
 
-exports.default = getAxiosPro();
+module.exports = getAxiosPro();
 
 /***/ }),
 /* 71 */
