@@ -101,7 +101,7 @@ module.exports = function (instance, config) {
       }
       console.error(err)
 
-      config.handlers && config.handlers.code && config.handlers.error(err)
+      config.handlers && config.handlers.error && config.handlers.error(err)
 
       return Promise.reject(err) // 返回接口返回的错误信息
     }
