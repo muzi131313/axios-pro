@@ -46,6 +46,7 @@ module.exports = function (instance, baseConfig) {
         console.log('根据你设置的timeout/真的请求超时 判断请求现在超时了，你可以在这里加入超时的处理方案')
         baseConfig.handlers && baseConfig.handlers.timeout && baseConfig.handlers.timeout(error.message)
         // return service.request(originalRequest);//例如再重复请求一次
+        return Promise.resolve(error)
       }
       //  2.需要重定向到错误页面
       // const errorInfo = error.response
