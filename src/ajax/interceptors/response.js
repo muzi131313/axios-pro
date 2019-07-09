@@ -65,7 +65,7 @@ module.exports = function (instance, config) {
             break
 
           case 404:
-            err.message = `请求地址出错: ${err.response.config.url}`
+            err.message = '请求地址出错: ' + err.response.config.url
             break
 
           case 408:

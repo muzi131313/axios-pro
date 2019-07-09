@@ -30,7 +30,7 @@ api.get = function (url, params, options) {
  */
 api.post = function (url, params, options) {
   options = options || {}
-  const data = params || {}
+  var data = params || {}
   return ajax(Object.assign({
     url: url,
     data: data,
@@ -46,7 +46,7 @@ api.post = function (url, params, options) {
  */
 api.put = function (url, params, options) {
   options = options || {}
-  const data = params || {}
+  var data = params || {}
   return ajax(Object.assign({
     url: url,
     data: data,
@@ -78,7 +78,7 @@ api.del = function (url, params, options) {
  */
 api.patch = function (url, params, options) {
   options = options || {}
-  const data = params || {}
+  var data = params || {}
   return ajax(Object.assign({
     url: url,
     data: data,
