@@ -38,7 +38,7 @@ var getAxiosPro = function() {
 
   // node environments
   // 支持服务端使用
-  axiosPro.inject = options => {
+  axiosPro.inject = function(options) {
     axiosPro.api = httpPromise(options)
   }
 
