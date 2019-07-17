@@ -15,11 +15,12 @@ api.get = function (url, params, options) {
     }
   }
   params = params || {}
-  return ajax(Object.assign({
+  options = Object.assign({}, {
     url: url,
     params: params,
     method: 'get'
-  }, options))
+  }, options)
+  return ajax(options)
 }
 
 /**
@@ -31,11 +32,12 @@ api.get = function (url, params, options) {
 api.post = function (url, params, options) {
   options = options || {}
   var data = params || {}
-  return ajax(Object.assign({
+  options = Object.assign({}, {
     url: url,
     data: data,
     method: 'post'
-  }, options))
+  }, options)
+  return ajax(options)
 }
 
 /**
@@ -47,11 +49,12 @@ api.post = function (url, params, options) {
 api.put = function (url, params, options) {
   options = options || {}
   var data = params || {}
-  return ajax(Object.assign({
+  options = Object.assign({}, {
     url: url,
     data: data,
     method: 'put'
-  }, options))
+  }, options)
+  return ajax(options)
 }
 
 /**
@@ -63,11 +66,12 @@ api.put = function (url, params, options) {
 api.del = function (url, params, options) {
   options = options || {}
   params = params || {}
-  return ajax(Object.assign({
+  options = Object.assign({}, {
     url: url,
     params: params,
     method: 'delete'
-  }, options))
+  }, options)
+  return ajax(options)
 }
 
 /**
@@ -79,11 +83,12 @@ api.del = function (url, params, options) {
 api.patch = function (url, params, options) {
   options = options || {}
   var data = params || {}
-  return ajax(Object.assign({
+  options = Object.assign({}, {
     url: url,
     data: data,
     method: 'patch'
-  }, options))
+  }, options)
+  return ajax(options)
 }
 
 module.exports = api
