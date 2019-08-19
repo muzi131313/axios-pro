@@ -40,7 +40,7 @@ module.exports = function (instance, config) {
 
       if (~fileTypes.indexOf(dataType)) {
         return {
-          data,
+          data: data,
           // 如果后台把文件名放到headers中的filename属性上
           fileName: response.headers['filename']
         }
