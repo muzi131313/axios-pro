@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    libraryExport: 'default',
+    // libraryExport: 'default', // 只在libraryTarget为commonjs或者commonjs2有效, 导出的对象, 可以指定某个值
     library: 'axiosPro', // 指定类库名,主要用于直接引用的方式(比如使用script 标签)
     libraryTarget: 'umd', // 定义打包方式Universal Module Definition,同时支持在CommonJS、AMD和全局变量使用
     globalObject: 'this' // 定义全局变量,兼容node和浏览器运行，避免出现"window is not defined"的情况
