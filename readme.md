@@ -1,10 +1,8 @@
 ## axios接口封装插件
 
 - [axios-pro-demo](https://github.com/muzi131313/axios-pro-demo)
-
-- TODO:
-  - url列表重名提示(vscode插件处理)
-  - 支持传参, 发送formdata数据, 不用自己再处理
+- [TODO-List](./TODO.md)
+- [CHANGELOG](./CHANGELOG.md)
 
 ### 目的
 - 错误处理
