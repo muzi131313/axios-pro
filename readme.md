@@ -3,6 +3,7 @@
 - [axios-pro-demo](https://github.com/muzi131313/axios-pro-demo)
 - [TODO-List](./TODO.md)
 - [CHANGELOG](./CHANGELOG.md)
+- [Issue Template](./.github/ISSUE_TEMPLATE.md)
 
 ### 目的
 - 错误处理
