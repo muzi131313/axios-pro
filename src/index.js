@@ -15,7 +15,7 @@ var utils = require('./utils')
 
 promiseFinally.shim()
 
-var getAxiosPro = function() {
+var getAxiosPro = function getAxiosPro() {
   var axiosPro = {
     api: {}
   }

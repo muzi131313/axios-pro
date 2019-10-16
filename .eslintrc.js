@@ -4,7 +4,8 @@ module.exports = {
     node: true
   },
   'extends': [
-    'standard'
+    'standard',
+    'plugin:jest/recommended'
     // 'plugin:vue/essential',
     // '@vue/standard'
   ],
@@ -18,6 +19,8 @@ module.exports = {
     "operator-linebreak": ["error", "before"],
     // function名称后，括号前不要空格
     "space-before-function-paren": 0,
+    // [ 'foo' ]
+    "array-bracket-spacing": ["error", "always"]
   },
   parserOptions: {
     parser: 'babel-eslint'

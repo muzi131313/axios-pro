@@ -4,10 +4,12 @@
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint . --ext js",
     "build": "npm run dev && npm run prod",
     "dev": "rollup --config config/rollup.config.dev.js",
     "prod": "cross-env NODE_ENV=production rollup --config config/rollup.config.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "precommit": "npm run lint",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -38,18 +40,23 @@
     "qs": "^6.5.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "@babel/runtime": "^7.6.3",
+    "@babel/runtime-corejs3": "^7.6.3",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
     "cross-env": "^5.2.0",
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.19.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "jest": "^24.9.0",
     "rollup": "^1.19.4",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-clear": "^2.0.7",
