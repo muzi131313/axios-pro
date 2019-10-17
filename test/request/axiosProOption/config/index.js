@@ -3,10 +3,10 @@
  * @description 全局统一处理配置
  * @createTime 2019年10月16日18:04:32
  */
-import UserConfig from './user.js'
-import RequestConfig from './request.js'
+import CustomConfig from './custom'
+import RequestConfig from './request'
 
 export default {
-  ...UserConfig,
+  ...CustomConfig,
   ...RequestConfig
 }

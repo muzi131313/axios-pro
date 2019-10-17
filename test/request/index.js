@@ -1,18 +1,7 @@
-import axiosPro from '../../index.js'
+import createAxiosPro from './createAxiosPro'
 
-import book from './modules/book.js'
-import order from './modules/order.js'
-import user from './modules/user.js'
+const axiosPro = createAxiosPro()
 
-import config from './config.js'
+const api = axiosPro.api
 
-const mappers = axiosPro.combine(
-  book,
-  order,
-  user
-)
-
-export default {
-  mappers,
-  config
-}
+export default api

@@ -1,5 +1,5 @@
 /**
- * @file test/request/config/user.js
+ * @file test/request/config/custom.js
  * @description axiosPro用户自定义全局配置
  * @createTime 2019年10月16日18:00:12
  */
@@ -10,12 +10,12 @@ export default {
     },
     data (data = {}) {
       const code = data.code
-      console.log('errorInfo: ', code)
+      if (code !== undefined) console.log('dataCode: ', code)
     },
     error (errorInfo) {
       // 此处我使用的是 element UI 的提示组件
       // Message.error(`ERROR: ${err}`);
-      console.log('errorInfo: ', errorInfo)
+      if (errorInfo) console.log('errorInfo: ', errorInfo)
     },
     // this function was callback when the request was send before
     // if you has your own config, or want to intercept all the request before send

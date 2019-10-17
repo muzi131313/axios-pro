@@ -1,5 +1,6 @@
 const user = {
   gets: {
+    userList: '/user/list'
   },
   posts: {
   },
