@@ -11,5 +11,3 @@ git add .
 git commit -m 'deploy'
 
 git push -f "https://${access_token}@github.com/muzi131313/axios-pro.git" master:master
-
-cd -
