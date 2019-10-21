@@ -35,14 +35,14 @@ module.exports = function (instance, config) {
       }
 
       // 文件流
-      var fileTypes = ['string', 'blob']
+      var fileTypes = [ 'string', 'blob' ]
       var dataType = objType(data)
 
       if (~fileTypes.indexOf(dataType)) {
         return {
           data: data,
           // 如果后台把文件名放到headers中的filename属性上
-          fileName: response.headers['filename']
+          fileName: response.headers.filename
         }
       }
       config.handlers && config.handlers.data && config.handlers.data(data)
