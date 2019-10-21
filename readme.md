@@ -1,3 +1,9 @@
+# axios-pro
+[![npm version](https://img.shields.io/npm/v/axios-pro.svg?style=flat-square)](https://www.npmjs.org/package/axios-pro)
+[![build status](https://img.shields.io/travis/axios/axios-pro.svg?style=flat-square)](https://travis-ci.org/muzi131313/axios-pro)
+[![Coverage Status](https://coveralls.io/repos/github/muzi131313/axios-pro/badge.svg)](https://coveralls.io/github/muzi131313/axios-pro)
+![license: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+
 ## axios接口封装插件
 
 - [axios-pro-demo](https://github.com/muzi131313/axios-pro-demo)

@@ -1,5 +1,4 @@
-services:
-  - xvfb
+sudo: required
 language: node_js
 node_js:
   - node
