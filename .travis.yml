@@ -1,0 +1,14 @@
+services:
+  - xvfb
+language: node_js
+node_js:
+  - node
+email:
+  on_failure: change
+  on_success: never
+script: bash ./build.sh
+after_success:
+- npm run coveralls
+env:
+  global:
+    secure: AOMePkKTpUe1kQV5uPjhby2F3WkxTDIzblMRFUWiyXIqKEusD34+RAX42SG6dTdEyKCcTLsNOq7dyp0soCKLG3WhmokqcX1J0atuKcMUs/uZDGYzz5+A5b/yfgaSFDx6knnisGqO7ktRbxcoQh5Wk6wuyOAAY900tfzgbMFjV23ONnM5y804GWnfGqcymmEKd5aDnrJfAMMqmf8p/+rNF4NNeUglifcJvwS7aGxFCBo/q3sC3tKiGZ+VsLkZESg0GeYiyHBIoZCRAOabta/bhRl7t5tEgtjsENTUvQB6rom9amNNaLgB8qC3Evr3wy+uz9et+yPhz0AdlPPuarsfTfJn5KAx8d4F/g3ru6LlRrWBOJ8OIMhzdVHDLKJOG27miipAXiVpBs+YLDPhZS89u7ojH0o7C2NgL3QY9/vYdwiPui9Lhkyc7pijb9yF2KwioVyXdu8hWWfOggmUeBjt7uJCiMlb87m/95t++TyZD0yHfxJMBAIM129qX/w7cVe50YGsc+RgXfvhfmRQeo0cAcmX1l18x37dpp0338ziVtAyf8ZUeD6YVe6HYVlOwJUp8c0Vp9WTr7Dcm6uONI+Ixx54rTEm6kdwdC3Sqs/8NOdtJ36y9vA01cedsC5Imh5DOsLI8/3izk7qqmOmipWdtM+HVuzrzCofCyanms1gyC4=
