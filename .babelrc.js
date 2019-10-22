@@ -18,10 +18,5 @@ module.exports = {
   ],
   ignore: [
     'dist/*.js'
-  ],
-  "env": {
-    "test": {
-      "plugins": [ "istanbul" ]
-    }
-  }
+  ]
 }
