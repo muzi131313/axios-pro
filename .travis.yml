@@ -1,7 +1,6 @@
 sudo: required
 language: node_js
-node_js:
-- node
+node_js: stable
 email:
   on_failure: change
   on_success: never
