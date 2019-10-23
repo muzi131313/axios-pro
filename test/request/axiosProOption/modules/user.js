@@ -1,6 +1,7 @@
 const user = {
   gets: {
-    userList: '/user/list'
+    userList: '/users',
+    userDetail: userId => `/user/${userId}`
   },
   posts: {
   },
