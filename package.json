@@ -29,6 +29,9 @@
     "email": "muzi131313@163.com"
   },
   "homepage": "https://github.com/muzi131313/axios-pro#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "resolutions": {
     "lodash": "4.17.13",
     "babel/**/lodash": "4.17.13"
