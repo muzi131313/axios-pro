@@ -1,6 +1,6 @@
 {
   "name": "axios-pro",
-  "version": "1.0.44",
+  "version": "1.0.43",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
     "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "precommit": "npm run lint",
-    "postversion": "git push origin master --tag"
+    "postversion": "git push --tags"
   },
   "repository": {
     "type": "git",
