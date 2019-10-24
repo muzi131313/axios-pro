@@ -2,10 +2,10 @@ sudo: required
 language: node_js
 node_js: stable
 # 触发条件
-branches:
-  only:
-    - master
-    - /^v\d+\.\d+.\d+$/
+# branches:
+#   only:
+#     - master
+#     - /^v\d+\.\d+.\d+$/
 # 邮件通知
 email:
   on_failure: change
@@ -39,7 +39,7 @@ jobs:
         on:
           repo: muzi131313/axios-pro
           tags: true
-          all_branches: true
+          # all_branches: true
           # branch: master
 # 变量
 env:
