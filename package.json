@@ -11,7 +11,7 @@
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
     "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "precommit": "npm run lint",
-    "postversion": "git push --tags"
+    "postversion": "git push origin master --tag"
   },
   "repository": {
     "type": "git",
