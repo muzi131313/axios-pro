@@ -6,6 +6,7 @@ var post = api.post
 var put = api.put
 var del = api.del
 var patch = api.patch
+var head = api.head
 
 var transURL = function (url, urlParams) {
   var urlType = utils.objType(url)
@@ -79,6 +80,19 @@ var initHttpPromise = function (mappers, config) {
             options.handlers = baseHandlers
             var requestURL = transURL(url, urlParams)
             return patch(requestURL, params, options)
+          }
+        })
+        break
+      case 'heades':
+        Object.keys(request).forEach(function (reqKey) {
+          var url = request[reqKey]
+          httpPromise[reqKey] = function (params, options, urlParams) {
+            options = options || {}
+            var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
+            options = Object.assign({}, config, options)
+            options.handlers = baseHandlers
+            var requestURL = transURL(url, urlParams)
+            return head(requestURL, params, options)
           }
         })
         break

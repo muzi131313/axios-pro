@@ -1,0 +1,2 @@
+- [HEAD](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD)
+  - similar to `GET`, but only return head of the result

@@ -91,4 +91,21 @@ api.patch = function (url, params, options) {
   return ajax(options)
 }
 
+/**
+ * @name head
+ * @param url string 请求url
+ * @param params object 请求参数
+ * @createTime 2019年10月24日21:03:12
+ */
+api.head = function (url, params, options) {
+  options = options || {}
+  var data = params || {}
+  options = Object.assign({}, {
+    url: url,
+    data: data,
+    method: 'head'
+  }, options)
+  return ajax(options)
+}
+
 module.exports = api
