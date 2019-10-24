@@ -40,6 +40,8 @@ jobs:
       # if: branch = master
       # if: tag IS present
       # node_js: stable
+      script:
+        - npm run lint
       deploy:
         provider: npm
         email: muzi131313@gmail.com
