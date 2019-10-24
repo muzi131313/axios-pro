@@ -2,13 +2,16 @@ sudo: required
 language: node_js
 node_js: stable
 # 触发条件
+# safelist
 branches:
   only:
-    - master
+    # - master
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-  # except:
-  #   - dev
-  #   - webpack
+# blocklist
+branches:
+  except:
+    - dev
+    - webpack
 # 邮件通知
 email:
   on_failure: change
