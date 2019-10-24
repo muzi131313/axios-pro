@@ -6,9 +6,9 @@ branches:
   only:
     - master
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-  except:
-    - dev
-    - webpack
+  # except:
+  #   - dev
+  #   - webpack
 # 邮件通知
 email:
   on_failure: change
@@ -33,8 +33,8 @@ jobs:
         - bash ./build.sh
     # 测试
     - stage: test
-        script:
-          - npm run coveralls
+      script:
+        - npm run coveralls
     # 发布
     - stage: release
       # if: branch = master
