@@ -21,8 +21,8 @@ export function getUserName(userID) {
   return request
     .userDetail(null, null, userID)
     .then(
-      resp => resp.data.detail
-        ? resp.data.detail.name
+      resp => resp.data
+        ? resp.data.name
         : null
     )
 }

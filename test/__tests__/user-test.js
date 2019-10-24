@@ -5,10 +5,10 @@ it('normal usage', () => {
   return user.getUsers().then(data => {
     return expect(data).toEqual([
       {
-        "name": "Mark"
+        name: 'Mark'
       },
       {
-        "name": "Paul"
+        name: 'Paul'
       }
     ])
   })
