@@ -2,10 +2,10 @@ sudo: required
 language: node_js
 node_js: stable
 # 触发条件
-branches:
-  only:
-    - master
-    - /^v\d+\.\d+.\d+$/
+# branches:
+#   only:
+#     - master
+#     - /^v\d+\.\d+.\d+$/
 # 邮件通知
 email:
   on_failure: change
