@@ -10,31 +10,31 @@ email:
 script: bash ./build.sh
 after_success:
 - npm run coveralls
-# deploy:
-#   provider: npm
-#   email: muzi131313@gmail.com
-#   skip_cleanup: true
-#   tag: next
-#   api_key:
-#     secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
-#   on:
-#     tags: true
-#     branch: master
-jobs:
-  include:
-    - stage: npm release
-      if: tag IS present
-      node_js: stable
-      deploy:
-        provider: npm
-        email: muzi131313@gmail.com
-        skip_cleanup: true
-        # tag: next
-        api_key:
-          secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
-        on:
-          tags: true
-          branch: master
+deploy:
+  provider: npm
+  email: muzi131313@gmail.com
+  skip_cleanup: true
+  tag: latest
+  api_key:
+    secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
+  on:
+    tags: true
+    branch: master
+# jobs:
+#   include:
+#     - stage: npm release
+#       if: tag IS present
+#       node_js: stable
+#       deploy:
+#         provider: npm
+#         email: muzi131313@gmail.com
+#         skip_cleanup: true
+#         # tag: next
+#         api_key:
+#           secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
+#         on:
+#           tags: true
+#           branch: master
 env:
   global:
     secure: BfOaUUn4aUeDlZzTevlEwt01jBoz0fEqjLG8anNwI2JEYvr9nh/7Js5xRGnQyFSPu6AXB2ueCgg1855yrU+QNOEl+5NLAv+8t1nhDy3HyjUxE1pn740449beVaU1KKfaDJGYfTAgLEvzPh1p/IwIj5Jzy5kuHQ1za7iSINdhusmje1vFE++a7m2jBG0FUxJMyoiDoY8RpQRC4ZjuEmFPfPe0ia3tBJ70cjJ6ZfQmQdB5hXTXs7jsaXM/pvHL3cLHUlkOtBzNHdBZqNQsnHRJBzDu2pflgvq3lB8cL0yXqbNaUczLICF0ZRgE3TeQg+cpiCGQMW7UkpDgfN+g8KQquoCG+3snhCetdtxOdHdmMFQa0Em64ARKnUwZfAXLzCqLHSsfDD0kJorD+hYbirxhlc84SV6/NUM/4tI8DOcheWj3GT+RcWOYNQyu44cbCzAKWFZfenfgNTMmxs4rjU2ZJ+LjwO48hBSA2Aa5eIx5dQ4T+wc7lIh+UkgM3WNR6cERweJ12LtZ4OR9u0usTDi/oAmI4Wus48rTxMmTSQd8dm+MZWdEaes4oXlHWYGE1fa7JvMfpqeAiw5Koim6VkVCSF6ZbY/nSCJdCXbtHxLsKD8cHCh+ASCS2v2EgsBz01HC9E3zuDg3j4JsnjZY/sqFao0a+8BIOaNA+iHAvl6Nels=

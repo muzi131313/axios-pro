@@ -1,6 +1,6 @@
 {
   "name": "axios-pro",
-  "version": "1.0.44",
+  "version": "1.0.43",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,10 @@
     "build": "npm run dev && npm run prod",
     "dev": "rollup --config config/rollup.config.dev.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production rollup --config config/rollup.config.prod.js",
-    "precommit": "npm run lint",
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
-    "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "precommit": "npm run lint",
+    "postversion": "git push --follow-tags"
   },
   "repository": {
     "type": "git",
@@ -33,8 +34,8 @@
     "access": "public"
   },
   "resolutions": {
-    "lodash": "4.17.13",
-    "babel/**/lodash": "4.17.13"
+    "lodash": "4.17.14",
+    "babel/**/lodash": "4.17.14"
   },
   "dependencies": {
     "axios": "^0.19.0",
