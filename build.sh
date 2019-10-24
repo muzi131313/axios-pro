@@ -5,6 +5,9 @@ set -e
 
 # 更新代码
 # git pull origin master
+rm -Rf dist
+git add .
+git commit -m 'remove dist'
 
 # 生成静态文件
 npm run build
