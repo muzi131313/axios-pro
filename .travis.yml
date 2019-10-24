@@ -5,6 +5,7 @@ node_js: stable
 branches:
   only:
     - master
+    - /^v\d+\.\d+.\d+$/
 # 邮件通知
 email:
   on_failure: change
