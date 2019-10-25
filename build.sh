@@ -5,11 +5,11 @@ set -e
 
 # 更新代码
 # git pull origin master
-rm -Rf dist
-git add .
-git commit -m 'remove dist'
+# rm -Rf dist
+# git add .
+# git commit -m 'remove dist'
 
-git push -f "https://${access_token}@github.com/muzi131313/axios-pro.git" master:master
+# git push -f "https://${access_token}@github.com/muzi131313/axios-pro.git" master:master
 
 # 生成静态文件
 npm run build
