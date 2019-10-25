@@ -26,3 +26,23 @@ export function getUserName(userID) {
         : null
     )
 }
+
+/**
+ * @name fetchUnkownURL
+ * @description 访问一个未知的地址, 应该报错404
+ * @created 2019年10月25日10:57:46
+ */
+export function fetchUnkownURL() {
+  return new Promise((resolve, reject) => {
+    request
+      .notExist(null, {
+        timeout: 3e3,
+        baseURL: 'https://roastwind.com',
+        handlers: {
+          error: function(errorInfo) {
+            resolve(errorInfo && errorInfo.message)
+          }
+        }
+      })
+  })
+}
