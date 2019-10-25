@@ -6,11 +6,10 @@
   "scripts": {
     "lint": "eslint . --ext js",
     "build": "npm run dev && npm run prod",
-    "dev": "rollup --config config/rollup.config.dev.js",
+    "dev": "./node_modules/.bin/cross-env NODE_ENV=development rollup --config config/rollup.config.dev.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production rollup --config config/rollup.config.prod.js",
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
     "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "precommit": "npm run lint",
     "postversion": "git push origin --tag",
     "prepublishOnly": "node release.js"
   },
@@ -36,7 +35,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run prepublishOnly"
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run prepublishOnly"
     }
   },
   "resolutions": {
@@ -81,4 +81,4 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-uglify": "^6.0.2"
   }
-}
+}

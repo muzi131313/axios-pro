@@ -8,28 +8,28 @@
  * @createTime 2019年02月21日16:08:38
  */
 var combine = function() {
-  var more = Array.prototype.slice.call(arguments)
-  if (!more) {
+  var args = Array.prototype.slice.call(arguments)
+  if (!args) {
     return console.warn('combine() require at least one params')
   }
   // only one parameter
-  if (more.length === 1) {
-    return more[0]
+  if (args.length === 1) {
+    return args[0]
   }
-  // has two or more than two parameters
-  var objs = more
-  objs = objs.sort(function (a, b) {
-    return Object.keys(b).length - Object.keys(a).length
+  // has two or args than two parameters
+  var objs = args
+  objs = objs.sort(function (prev, next) {
+    return Object.keys(next).length - Object.keys(prev).length
   })
   var baseObj = objs[0]
   var baseKeys = Object.keys(baseObj)
-  var obj = {}
+  var result = {}
   baseKeys.forEach(function (baseKey) {
-    obj[baseKey] = objs.reduce(function (cur, obj) {
-      return Object.assign(cur, obj[baseKey])
+    result[baseKey] = objs.reduce(function (cur, now) {
+      return Object.assign(cur, now[baseKey])
     }, {})
   })
-  return obj
+  return result
 }
 
 /**
