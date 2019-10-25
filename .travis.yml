@@ -3,10 +3,10 @@ language: node_js
 node_js: stable
 # 触发条件
 # safelist
-# branches:
-#   only:
+branches:
+  only:
     # - master
-    # - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 # blocklist
 # branches:
 #   except:
