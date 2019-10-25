@@ -58,7 +58,8 @@ jobs:
           # 只提交tag时，才发布
           tags: true
           # 代码分支
-          branch: master
+          all_branches: true
+          # branch: master
 # 变量
 env:
   global:
