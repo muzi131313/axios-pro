@@ -3,6 +3,9 @@
  * @desc {{description}}{{返回响应拦截}}
  * @createTime 2018年11月03日23:16:47
  */
+var getLanguage = require('../../language/index')
+var { IS_TEST } = require('../../constant')
+
 module.exports = function (instance, config) {
   var objType = function (obj) {
     return Object.prototype.toString.call(obj)
@@ -51,66 +54,66 @@ module.exports = function (instance, config) {
     },
     function (err) {
       if (err && err.response) {
-        switch (err.response.status) {
-          case 400:
-            err.message = '请求错误'
-            break
+        var language = getLanguage(config.handlers && config.handlers.language)
+        var errMessage = language.msg[err.response.status] || 'unknow error'
+        err.message = errMessage
+        // switch (err.response.status) {
+        //   case 400:
+        //     err.message = '请求错误'
+        //     break
 
-          case 401:
-            err.message = '未授权，请登录'
-            break
+        //   case 401:
+        //     err.message = '未授权，请登录'
+        //     break
 
-          case 403:
-            err.message = '拒绝访问'
-            break
+        //   case 403:
+        //     err.message = '拒绝访问'
+        //     break
 
-          case 404:
-            err.message = '请求地址出错: ' + err.response.config.url
-            break
+        //   case 404:
+        //     err.message = '请求地址出错: ' + err.response.config.url
+        //     break
 
-          case 408:
-            err.message = '请求超时'
-            break
+        //   case 408:
+        //     err.message = '请求超时'
+        //     break
 
-          case 500:
-            err.message = '服务器内部错误'
-            break
+        //   case 500:
+        //     err.message = '服务器内部错误'
+        //     break
 
-          case 501:
-            err.message = '服务未实现'
-            break
+        //   case 501:
+        //     err.message = '服务未实现'
+        //     break
 
-          case 502:
-            err.message = '网关错误'
-            break
+        //   case 502:
+        //     err.message = '网关错误'
+        //     break
 
-          case 503:
-            err.message = '服务不可用'
-            break
+        //   case 503:
+        //     err.message = '服务不可用'
+        //     break
 
-          case 504:
-            err.message = '网关超时'
-            break
+        //   case 504:
+        //     err.message = '网关超时'
+        //     break
 
-          case 505:
-            err.message = 'HTTP版本不受支持'
-            break
+        //   case 505:
+        //     err.message = 'HTTP版本不受支持'
+        //     break
 
-          default:
-        }
+        //   default:
+        // }
       }
-      console.error(err)
+      if (!IS_TEST()) {
+        console.error('catch error', err)
+      }
 
       if (config.handlers && config.handlers.error) {
         config.handlers.error(err)
         return Promise.resolve(err)
       }
-      else {
-        return Promise.reject(err) // 返回接口返回的错误信息
-      }
-
-      // config.handlers && config.handlers.error && config.handlers.error(err)
-      // return Promise.reject(err) // 返回接口返回的错误信息
+      return Promise.reject(err) // 返回接口返回的错误信息
     }
   )
   return instance

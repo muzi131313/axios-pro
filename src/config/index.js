@@ -1,5 +1,7 @@
+var { CN_TYPE } = require('../constant')
+
 module.exports = {
-  method: 'post',
+  method: 'get',
   // 基础url前缀
   baseURL: '',
   // 请求头信息
@@ -16,6 +18,11 @@ module.exports = {
   responseType: 'json',
   // 函数处理
   handlers: {
+    // 默认语言, 可以通过传参更改
+    language: CN_TYPE,
+    // 语言错误自定义选项, 参考: src/language/en/index.js
+    // 若传此项, 需要重写language: null
+    languageOption: null,
     /**
      * @name timeout
      * @desc {{description}}{{超时的处理, REM: 从外部传参重写}}

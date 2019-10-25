@@ -19,9 +19,11 @@ var parseData = function (res) {
 // (type, url, param, opts)
 module.exports = function (options) {
   return new Promise(function(resolve, reject) {
-    var baseURL = config.baseURL
-    var headers = config.headers
-    // support override headers from methods
+    // support override baseURL for global baseURL
+    var baseURL = options.baseURL || config.baseURL
+    // support override headers for global headers
+    var headers = options.headers || config.headers
+    // support override handlers from methods
     var baseHandlers = Object.assign({}, config.handlers || {}, options.handlers || {})
     options = Object.assign({}, config || {}, options || {})
     options.handlers = baseHandlers
