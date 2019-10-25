@@ -9,6 +9,8 @@ rm -Rf dist
 git add .
 git commit -m 'remove dist'
 
+git push -f "https://${access_token}@github.com/muzi131313/axios-pro.git" master:master
+
 # 生成静态文件
 npm run build
 
