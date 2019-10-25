@@ -1,6 +1,6 @@
 {
   "name": "axios-pro",
-  "version": "1.0.44",
+  "version": "1.0.43",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
@@ -81,4 +81,4 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-uglify": "^6.0.2"
   }
-}
+}
