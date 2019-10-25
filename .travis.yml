@@ -3,10 +3,10 @@ language: node_js
 node_js: stable
 # 触发条件
 # safelist
-branches:
-  only:
+# branches:
+#   only:
     # - master
-    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+    # - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 # blocklist
 # branches:
 #   except:
@@ -16,48 +16,70 @@ branches:
 email:
   on_failure: change
   on_success: never
+script:
+  - npm run lint
+  - npm run test
+before_deploy:
+  - bash ./build.sh
+deploy:
+  provider: npm
+  email: muzi131313@gmail.com
+  skip_cleanup: true
+  # 使用最新的tag进行发版
+  tag: latest
+  # 条件
+  condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
+  api_key:
+    secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
+  on:
+    repo: muzi131313/axios-pro
+    # 只提交tag时，才发布
+    tags: true
+    # 代码分支
+    all_branches: true
+    # branch: master
 
 # 阶段
-stages:
-  - name: build
-  - name: test
-  - name: release
+# stages:
+#   - name: build
+#   - name: test
+#   - name: release
 
-# 任务
-jobs:
-  include:
-    # 构建
-    - stage: build
-      script:
-        - bash ./build.sh
-    # 测试
-    - stage: test
-      script:
-        - npm run coveralls
-    # 发布
-    - stage: release
-      # if: branch = master
-      # if: tag IS present
-      # node_js: stable
-      script:
-        - npm run lint
-      deploy:
-        provider: npm
-        email: muzi131313@gmail.com
-        skip_cleanup: true
-        # 使用最新的tag进行发版
-        tag: latest
-        # 条件
-        condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
-        api_key:
-          secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
-        on:
-          repo: muzi131313/axios-pro
-          # 只提交tag时，才发布
-          tags: true
-          # 代码分支
-          all_branches: true
-          # branch: master
+# # 任务
+# jobs:
+#   include:
+#     # 构建
+#     - stage: build
+#       script:
+#         - bash ./build.sh
+#     # 测试
+#     - stage: test
+#       script:
+#         - npm run coveralls
+#     # 发布
+#     - stage: release
+#       # if: branch = master
+#       # if: tag IS present
+#       # node_js: stable
+#       script:
+#         - npm run lint
+#       deploy:
+#         provider: npm
+#         email: muzi131313@gmail.com
+#         skip_cleanup: true
+#         # 使用最新的tag进行发版
+#         tag: latest
+#         # 条件
+#         condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
+#         api_key:
+#           secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
+#         on:
+#           repo: muzi131313/axios-pro
+#           # 只提交tag时，才发布
+#           tags: true
+#           # 代码分支
+#           all_branches: true
+#           # branch: master
 # 变量
 env:
   global:
