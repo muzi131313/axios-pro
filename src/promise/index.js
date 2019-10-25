@@ -23,6 +23,12 @@ var transURL = function (url, urlParams) {
 }
 
 var initHttpPromise = function (mappers, config) {
+  if (utils.objType(mappers) !== 'object') {
+    throw new Error('mappers was not a object params')
+  }
+  if (utils.objType(config) !== 'object') {
+    throw new Error('config was not a object params')
+  }
   return Object.keys(mappers).reduce(function (current, now) {
     var requests = mappers[now]
     var httpPromise = current
