@@ -1,12 +1,12 @@
 {
   "name": "axios-pro",
-  "version": "1.0.44",
+  "version": "1.0.43",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext js",
     "build": "npm run dev && npm run prod",
-    "dev": "rollup --config config/rollup.config.dev.js",
+    "dev": "./node_modules/.bin/cross-env NODE_ENV=development rollup --config config/rollup.config.dev.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production rollup --config config/rollup.config.prod.js",
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
     "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
