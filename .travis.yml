@@ -1,88 +1,21 @@
 sudo: required
 language: node_js
 node_js: stable
-# 触发条件
-# safelist
 branches:
   only:
-    - master
-    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-# blocklist
-# branches:
-#   except:
-#     - dev
-#     - webpack
-# 邮件通知
+  - master
+  - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 email:
   on_failure: change
   on_success: never
-# script:
-#   - npm run lint
-#   - npm run test
-# before_deploy:
-#   - bash ./build.sh
-deploy:
-  provider: npm
-  email: muzi131313@gmail.com
-  skip_cleanup: true
-  # 使用最新的tag进行发版
-  tag: latest
-  # 条件
-  condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
-  api_key:
-    secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
-  on:
-    repo: muzi131313/axios-pro
-    # 只提交tag时，才发布
-    tags: true
-    # 代码分支
-    all_branches: true
-    # branch: master
-
-# 阶段
-# stages:
-#   - name: build
-#   - name: test
-#   - name: release
-
-# # 任务
-# jobs:
-#   include:
-#     # 构建
-#     - stage: build
-#       if: branch = master
-#       script:
-#         - bash ./build.sh
-#     # 测试
-#     - stage: test
-#       if: branch = master
-#       script:
-#         - npm run coveralls
-#     # 发布
-#     - stage: release
-#       # if: branch = master
-#       if: tag IS present
-#       # node_js: stable
-#       script:
-#         - npm run lint
-#       deploy:
-#         provider: npm
-#         email: muzi131313@gmail.com
-#         skip_cleanup: true
-#         # 使用最新的tag进行发版
-#         tag: latest
-#         # 条件
-#         # condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
-#         api_key:
-#           secure: N/3TZSL0LbTUnSWA5Ig+koFIjq32iVD+pFiL43ZWlvDpmVOSGDBpAQk0cg8P7BXiolknKy36+3x0y5DWyC/XVXyVxawaockNYM+YGggUTjgoAHvmhtVuuiUNnjW/XEIgI3igJEvHb1vYrLWcNePKpYxLJOdaBkATEp3prFDNZAJ9gVRBdOUtGyRk2lDWEr46TBy9vLCkAe5fL+CTKOAMTL7EWFtgXVnj5HOx/JYOdPCIUx2WzThXW3lfQEC5qUm3kEVtV1SU40OdUgWeR/PT+p7Oyx4d9CXRSX8p05+/wJCyHrp3rMTr71/sbZSmwd26gT1CJqAOsz9ThjOST4o8pFb64zyqp+EwR5acmd8Kloo43TEJe5+aFNVIHYpjkMQtgc0lqW4OJE+FbAkj+n+6L3na2GhQlMf4MfGldBcqes3NDGDGqBYjZu3ppKFpZdRmpM5HccV7ZrFCc0Ze2mIvZ8NxOvkrto0o9Lhrc8AjSxAFBnBWvn4a26euyHNqjfDYklAEVpo33U9V/LaVsjFn7ni8+RngkMXz8djFOcb1PZ29GGkIxkQqVy6jrCj+Ro17ugpsY90oDaiCl5N6mTxWPQVa9TpSYFV0HR0u0Vub+NnVH0kPkIBneuCYMIye+5wSWBn99SPk8MXxonITmyKsY0xzRRTKGEpk4vTk+Fht0Vc=
-#         on:
-#           repo: muzi131313/axios-pro
-#           # 只提交tag时，才发布
-#           tags: true
-#           # 代码分支
-#           all_branches: true
-#           # branch: master
-# 变量
 env:
   global:
     secure: BfOaUUn4aUeDlZzTevlEwt01jBoz0fEqjLG8anNwI2JEYvr9nh/7Js5xRGnQyFSPu6AXB2ueCgg1855yrU+QNOEl+5NLAv+8t1nhDy3HyjUxE1pn740449beVaU1KKfaDJGYfTAgLEvzPh1p/IwIj5Jzy5kuHQ1za7iSINdhusmje1vFE++a7m2jBG0FUxJMyoiDoY8RpQRC4ZjuEmFPfPe0ia3tBJ70cjJ6ZfQmQdB5hXTXs7jsaXM/pvHL3cLHUlkOtBzNHdBZqNQsnHRJBzDu2pflgvq3lB8cL0yXqbNaUczLICF0ZRgE3TeQg+cpiCGQMW7UkpDgfN+g8KQquoCG+3snhCetdtxOdHdmMFQa0Em64ARKnUwZfAXLzCqLHSsfDD0kJorD+hYbirxhlc84SV6/NUM/4tI8DOcheWj3GT+RcWOYNQyu44cbCzAKWFZfenfgNTMmxs4rjU2ZJ+LjwO48hBSA2Aa5eIx5dQ4T+wc7lIh+UkgM3WNR6cERweJ12LtZ4OR9u0usTDi/oAmI4Wus48rTxMmTSQd8dm+MZWdEaes4oXlHWYGE1fa7JvMfpqeAiw5Koim6VkVCSF6ZbY/nSCJdCXbtHxLsKD8cHCh+ASCS2v2EgsBz01HC9E3zuDg3j4JsnjZY/sqFao0a+8BIOaNA+iHAvl6Nels=
+deploy:
+  provider: npm
+  email: muzi131313@gmail.com
+  api_key:
+    secure: apol0iZJi0asrMfgwV5N4hkKaa7BoP72BeiAHdj0WvMzZt9DxJdgQIQoaGjEPG92YnU8ri84FWrBh5JLobKS3EbC8pQbn2wPHIBF5GGoB4WO7w5yOt2sDAtBG5kJa8oVpV/gIFboTKlAZw9nAVwAOZn2duWd9sohquTqxaOVkrsPwz3ExKMDV0+qakiYLb4d0Fwnh1H/upDHwPl00V8imos0irsy+LGOn0YOctJP9HUhyjW4pY91Ds87HTEjpL//ifviDTYnT/4/JhA9l7iyEKtawIxyeiX065EA03FRgew2fKn7OZvWCvQTglUhXv3quJq6ZVTQXajIB9t/atLq3+6HkYHggVUCWAOYz5t0yAWT6P0laSXc5DLzUpezU33Z5QsymxsU9GdncTFy2BwetQ1hwSIGL8zNw6ekEZuW3Fc9YEj/OEBtCE07jylKHVBvq5cw/C5Y5Hikg2AlCql4O+ZPKEU6IAcPCZwdbSyIPyJbXrUUTnOgHS+z/K1eRr/uL98BjiBpYm3LwKSYwy68S4llIndbd0dg4qCUoervus7/uqyHfjdDFwgf/jR1iHkLXRrIPBUboWOSaHWtSNy7UAjfmk9+0rHme4g6Pb0yY+611Uc5qRR7+1+wkxyEbNks/RZLy1e6LdM6rDFKyVn/2tm1VvvE0u2VGksZwOEiNXY=
+  on:
+    tags: true
+    repo: muzi131313/axios-pro
