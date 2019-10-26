@@ -28,6 +28,7 @@ jobs:
         - npm run coveralls
     # 发版
     - stage: release
+      # tag存在则执行
       if: tag IS present
       # 构建
       before_deploy:
