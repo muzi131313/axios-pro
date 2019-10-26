@@ -1,6 +1,8 @@
+# doc: https://docs.travis-ci.com/user/deployment/npm#stq=&stp=0
 sudo: required
 language: node_js
 node_js: stable
+# 触发条件: master, 或v1.0.1提交tag
 branches:
   only:
   - master
@@ -11,11 +13,45 @@ email:
 env:
   global:
     secure: BfOaUUn4aUeDlZzTevlEwt01jBoz0fEqjLG8anNwI2JEYvr9nh/7Js5xRGnQyFSPu6AXB2ueCgg1855yrU+QNOEl+5NLAv+8t1nhDy3HyjUxE1pn740449beVaU1KKfaDJGYfTAgLEvzPh1p/IwIj5Jzy5kuHQ1za7iSINdhusmje1vFE++a7m2jBG0FUxJMyoiDoY8RpQRC4ZjuEmFPfPe0ia3tBJ70cjJ6ZfQmQdB5hXTXs7jsaXM/pvHL3cLHUlkOtBzNHdBZqNQsnHRJBzDu2pflgvq3lB8cL0yXqbNaUczLICF0ZRgE3TeQg+cpiCGQMW7UkpDgfN+g8KQquoCG+3snhCetdtxOdHdmMFQa0Em64ARKnUwZfAXLzCqLHSsfDD0kJorD+hYbirxhlc84SV6/NUM/4tI8DOcheWj3GT+RcWOYNQyu44cbCzAKWFZfenfgNTMmxs4rjU2ZJ+LjwO48hBSA2Aa5eIx5dQ4T+wc7lIh+UkgM3WNR6cERweJ12LtZ4OR9u0usTDi/oAmI4Wus48rTxMmTSQd8dm+MZWdEaes4oXlHWYGE1fa7JvMfpqeAiw5Koim6VkVCSF6ZbY/nSCJdCXbtHxLsKD8cHCh+ASCS2v2EgsBz01HC9E3zuDg3j4JsnjZY/sqFao0a+8BIOaNA+iHAvl6Nels=
-deploy:
-  provider: npm
-  email: muzi131313@gmail.com
-  api_key:
-    secure: apol0iZJi0asrMfgwV5N4hkKaa7BoP72BeiAHdj0WvMzZt9DxJdgQIQoaGjEPG92YnU8ri84FWrBh5JLobKS3EbC8pQbn2wPHIBF5GGoB4WO7w5yOt2sDAtBG5kJa8oVpV/gIFboTKlAZw9nAVwAOZn2duWd9sohquTqxaOVkrsPwz3ExKMDV0+qakiYLb4d0Fwnh1H/upDHwPl00V8imos0irsy+LGOn0YOctJP9HUhyjW4pY91Ds87HTEjpL//ifviDTYnT/4/JhA9l7iyEKtawIxyeiX065EA03FRgew2fKn7OZvWCvQTglUhXv3quJq6ZVTQXajIB9t/atLq3+6HkYHggVUCWAOYz5t0yAWT6P0laSXc5DLzUpezU33Z5QsymxsU9GdncTFy2BwetQ1hwSIGL8zNw6ekEZuW3Fc9YEj/OEBtCE07jylKHVBvq5cw/C5Y5Hikg2AlCql4O+ZPKEU6IAcPCZwdbSyIPyJbXrUUTnOgHS+z/K1eRr/uL98BjiBpYm3LwKSYwy68S4llIndbd0dg4qCUoervus7/uqyHfjdDFwgf/jR1iHkLXRrIPBUboWOSaHWtSNy7UAjfmk9+0rHme4g6Pb0yY+611Uc5qRR7+1+wkxyEbNks/RZLy1e6LdM6rDFKyVn/2tm1VvvE0u2VGksZwOEiNXY=
-  on:
-    tags: true
-    repo: muzi131313/axios-pro
+
+cache: yarn
+install: yarn
+
+stages:
+  - name: test
+  - name: release
+jobs:
+  include:
+    # 测试
+    - stage: test
+      script:
+        - npm run lint
+        - npm run coveralls
+    # 发版
+    - stage: release
+      # tag存在则执行
+      # doc: https://docs.travis-ci.com/user/conditions-v1
+      if: tag IS present
+      # 构建
+      before_deploy:
+        - npm run build
+      # 发布到npm
+      deploy:
+        provider: npm
+        email: muzi131313@gmail.com
+        # 保留before_deploy中产生的文件
+        skip_cleanup: true
+        # 使用最新的tag进行发版
+        tag: latest
+        # 条件
+        # condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
+        # doc: https://docs.travis-ci.com/user/conditions-v1
+        api_key:
+          secure: apol0iZJi0asrMfgwV5N4hkKaa7BoP72BeiAHdj0WvMzZt9DxJdgQIQoaGjEPG92YnU8ri84FWrBh5JLobKS3EbC8pQbn2wPHIBF5GGoB4WO7w5yOt2sDAtBG5kJa8oVpV/gIFboTKlAZw9nAVwAOZn2duWd9sohquTqxaOVkrsPwz3ExKMDV0+qakiYLb4d0Fwnh1H/upDHwPl00V8imos0irsy+LGOn0YOctJP9HUhyjW4pY91Ds87HTEjpL//ifviDTYnT/4/JhA9l7iyEKtawIxyeiX065EA03FRgew2fKn7OZvWCvQTglUhXv3quJq6ZVTQXajIB9t/atLq3+6HkYHggVUCWAOYz5t0yAWT6P0laSXc5DLzUpezU33Z5QsymxsU9GdncTFy2BwetQ1hwSIGL8zNw6ekEZuW3Fc9YEj/OEBtCE07jylKHVBvq5cw/C5Y5Hikg2AlCql4O+ZPKEU6IAcPCZwdbSyIPyJbXrUUTnOgHS+z/K1eRr/uL98BjiBpYm3LwKSYwy68S4llIndbd0dg4qCUoervus7/uqyHfjdDFwgf/jR1iHkLXRrIPBUboWOSaHWtSNy7UAjfmk9+0rHme4g6Pb0yY+611Uc5qRR7+1+wkxyEbNks/RZLy1e6LdM6rDFKyVn/2tm1VvvE0u2VGksZwOEiNXY=
+        on:
+          tags: true
+          repo: muzi131313/axios-pro
+      # 推送到github
+      # doc: https://docs.travis-ci.com/user/deployment/catalyze/
+      after_deploy:
+        - bash ./build/release.sh
