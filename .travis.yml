@@ -30,6 +30,7 @@ jobs:
     # 发版
     - stage: release
       # tag存在则执行
+      # tag不存在判断为: if: tag IS NOT present
       # doc: https://docs.travis-ci.com/user/conditions-v1
       if: tag IS present
       # 构建
