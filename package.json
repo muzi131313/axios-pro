@@ -9,9 +9,9 @@
     "dev": "./node_modules/.bin/cross-env NODE_ENV=development rollup --config config/rollup.config.dev.js",
     "prod": "./node_modules/.bin/cross-env NODE_ENV=production rollup --config config/rollup.config.prod.js",
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
-    "coveralls": "./node_modules/.bin/cross-env npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coveralls": "npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "postversion": "git push origin --tag",
-    "prepublishOnly": "node release.js"
+    "prepublishOnly": "node ./build/release.js"
   },
   "repository": {
     "type": "git",
@@ -81,4 +81,4 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-uglify": "^6.0.2"
   }
-}
+}
