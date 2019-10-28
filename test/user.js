@@ -1,4 +1,5 @@
 import request from './request'
+import { WEB_URL } from './constant'
 
 /**
  * @name getUsers
@@ -37,7 +38,7 @@ export function fetchUnkownURL() {
     request
       .notExist(null, {
         timeout: 3e3,
-        baseURL: 'https://roastwind.com',
+        baseURL: WEB_URL,
         handlers: {
           error: function(errorInfo) {
             resolve(errorInfo && errorInfo.message)
