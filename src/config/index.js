@@ -45,13 +45,6 @@ module.exports = {
         default:
           break
       }
-      // 若不是正确的返回code，且已经登录，就抛出错误
-      // const err = new Error(data.description)
-
-      // err.data = data
-      // err.response = response
-
-      // throw err
     },
     /**
      * @name error
@@ -64,6 +57,7 @@ module.exports = {
       // Message.error(`ERROR: ${err}`);
     },
     config: function (config) {
+      // 可以用来控制登陆权限
       // if (!Utils.isNotLogin()) {
       //     config.headers['X-Token'] = Utils.getToken() // 让每个请求携带token--['X-Token']为自定义key 请根据实际情况自行修改
       // } else {

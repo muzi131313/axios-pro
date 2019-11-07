@@ -27,9 +27,6 @@ var getAxiosPro = function getAxiosPro() {
     install.installed = true
 
     // TODO: 1.区分不同模块
-    // TODO: 2.mapper应该作为参数引入
-    // Object.defineProperties未生效
-    // doc: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties
     // 注意哦，此处挂载在 Vue 原型的 $api 对象上
     var api = httpPromise(options)
     axiosPro.api = api
