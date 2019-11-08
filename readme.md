@@ -94,7 +94,7 @@
     </details>
 - use in store
   - <details>
-      <summary> store/modules/org.js: <summary>
+      <summary> store/modules/org.js: </summary>
 
       ```javascript
       import axiosPro from 'axios-pro'
