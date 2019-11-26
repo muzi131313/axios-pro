@@ -1,5 +1,5 @@
 var api = require('../ajax/api')
-var utils = require('../utils')
+var utils = require('../utils/index')
 
 var get = api.get
 var post = api.post

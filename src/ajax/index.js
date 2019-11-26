@@ -1,5 +1,5 @@
 var axios = require('axios')
-var config = require('../config') // 倒入默认配置
+var config = require('../config/index') // 倒入默认配置
 var request = require('./interceptors/request')
 var response = require('./interceptors/response')
 
