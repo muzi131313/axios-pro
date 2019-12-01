@@ -37,3 +37,13 @@ it('api: put request', () => {
       return expect(resp.data).toEqual({ name: 'Jack' })
     })
 })
+
+it('api: del request', () => {
+  expect.assertions(1)
+
+  const del = api.del
+  return del('/user/new/del', null, { baseURL: BASE_URL })
+    .then(resp => {
+      return expect(resp.data).toEqual('ok')
+    })
+})
