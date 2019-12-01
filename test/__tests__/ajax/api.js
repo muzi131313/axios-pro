@@ -17,3 +17,23 @@ it('api: get request', () => {
     ])
   })
 })
+
+it('api: post request', () => {
+  expect.assertions(1)
+
+  const post = api.post
+  return post('/user/new/add', null, { baseURL: BASE_URL })
+    .then(resp => {
+      return expect(resp.data).toEqual({ name: 'Jack' })
+    })
+})
+
+it('api: put request', () => {
+  expect.assertions(1)
+
+  const put = api.put
+  return put('/user/new/edit', null, { baseURL: BASE_URL })
+    .then(resp => {
+      return expect(resp.data).toEqual({ name: 'Jack' })
+    })
+})
