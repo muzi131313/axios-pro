@@ -1,7 +1,8 @@
 import request from '../../../../src/ajax/interceptors/request'
-import axiosPro from '../../../../src/index'
 
 import { BASE_URL } from '../../../constant'
+
+import axios from 'axios'
 
 it('api: interceptors request', () => {
   expect.assertions(1)
@@ -9,26 +10,23 @@ it('api: interceptors request', () => {
   var baseConfig = {
     baseURL: BASE_URL
   }
-  axiosPro.inject({
-    mappers: {
-      gets: {
-        users: '/users'
-      },
-      posts: {},
-      puts: {},
-      dels: {},
-      patches: {},
-      heades: {}
-    },
-    config: baseConfig
+
+  const url = '/users'
+  const method = 'get'
+
+  const option = {
+    url,
+    method
+  }
+
+  var instance = axios.create({
+    baseURL: BASE_URL
   })
 
-  var axios = request(axiosPro, baseConfig)
-  return axios.api
-    .users()
+  var axiosProIntance = request(instance, baseConfig)
+  return axiosProIntance(option)
     .then(resp => {
-      console.log('resp.data: ', resp.data)
-      return expect(resp.data).toEqual([
+      return expect(resp.data.data).toEqual([
         { name: 'Mark' },
         { name: 'Paul' }
       ])
