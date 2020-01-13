@@ -1,5 +1,6 @@
 import request from './request'
 import { WEB_URL } from './constant'
+import axios from 'axios'
 
 /**
  * @name getUsers
@@ -7,9 +8,7 @@ import { WEB_URL } from './constant'
  * @created 2019年10月23日21:05:48
  */
 export function getUsers() {
-  return request
-    .userList()
-    .then(resp => resp.data)
+  return request.userList().then(resp => resp.data)
 }
 
 /**
@@ -21,11 +20,7 @@ export function getUsers() {
 export function getUserName(userID) {
   return request
     .userDetail(null, null, userID)
-    .then(
-      resp => resp.data
-        ? resp.data.name
-        : null
-    )
+    .then(resp => (resp.data ? resp.data.name : null))
 }
 
 /**
@@ -35,15 +30,30 @@ export function getUserName(userID) {
  */
 export function fetchUnkownURL() {
   return new Promise((resolve, reject) => {
-    request
-      .notExist(null, {
-        timeout: 3e3,
-        baseURL: WEB_URL,
-        handlers: {
-          error: function(errorInfo) {
-            resolve(errorInfo && errorInfo.message)
-          }
+    request.notExist(null, {
+      timeout: 3e3,
+      baseURL: WEB_URL,
+      handlers: {
+        error: function(errorInfo) {
+          resolve(errorInfo && errorInfo.message)
         }
+      }
+    })
+  })
+}
+
+export function fetchUnknowURLObject() {
+  return new Promise(resolve => {
+    try {
+      axios.get('https://roastwind.com/axios-pro/404').then(resp => {
+        console.log(resp)
+        resolve('请求地址出错')
       })
+    }
+    catch (e) {
+      console.log('catch error')
+      console.error(e)
+      resolve('请求地址出错')
+    }
   })
 }
