@@ -1,6 +1,6 @@
 {
   "name": "axios-pro",
-  "version": "1.0.44",
+  "version": "1.0.45",
   "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
@@ -40,11 +40,11 @@
     }
   },
   "resolutions": {
-    "lodash": "4.17.14",
-    "babel/**/lodash": "4.17.14"
+    "lodash": "4.17.21",
+    "babel/**/lodash": "4.17.21"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": ">=0.21.1",
     "core-js": "^2.6.9",
     "es6-promise": "^4.2.8",
     "promise.prototype.finally": "^3.1.0",
@@ -69,7 +69,7 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "husky": "^3.0.9",
+    "husky": "^7.0.4",
     "jest": "^24.9.0",
     "rollup": "^1.19.4",
     "rollup-plugin-babel": "^4.3.3",
