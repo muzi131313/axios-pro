@@ -2,7 +2,7 @@ const user = {
   gets: {
     userList: '/users',
     userDetail: userId => `/user/${userId}`,
-    notExist: '/axios-pro/404'
+    notExist: '/a/119000001778753x'
   },
   posts: {
   },

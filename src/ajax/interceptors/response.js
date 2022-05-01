@@ -53,7 +53,7 @@ module.exports = function (instance, config) {
     },
     function (err) {
       if (err) {
-        console.error(err)
+        console.error(err.message)
       }
 
       if (err && err.response) {

@@ -23,8 +23,8 @@ it('api: interceptors request', () => {
     baseURL: BASE_URL
   })
 
-  var axiosProIntance = request(instance, baseConfig)
-  return axiosProIntance(option)
+  var axiosProInstance = request(instance, baseConfig)
+  return axiosProInstance(option)
     .then(resp => {
       return expect(resp.data.data).toEqual([
         { name: 'Mark' },

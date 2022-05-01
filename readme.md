@@ -22,7 +22,7 @@
   - 后台应在headers中添加filename的属性，值为文件名
 - 接口工厂
 
-## recomend usage
+## recommend usage
 ### add api module
 - file folders
   ````
