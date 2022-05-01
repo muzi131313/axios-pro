@@ -1,4 +1,4 @@
-import * as user from '../user'
+import * as user from '../user-request'
 
 it('normal usage', () => {
   expect.assertions(1)
@@ -14,9 +14,9 @@ it('dynamic url, such as /api/user/:id', () => {
   })
 })
 
-it('fetch an unkown url address, will get a 404 message', () => {
+it('fetch an unknown url address, will get a 404 message', () => {
   expect.assertions(1)
-  return user.fetchUnkownURL().then(message => {
+  return user.fetchUnknownURL().then(message => {
     return expect(message).toEqual('请求地址出错')
   })
 })
