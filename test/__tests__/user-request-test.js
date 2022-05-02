@@ -21,9 +21,9 @@ it('fetch an unknown url address, will get a 404 message', () => {
   })
 })
 
-it('featch an unkown url address, will get a 404 message two', () => {
+it('fetch an unknown url address, will get a 404 message two', () => {
   expect.assertions(1)
-  return user.fetchUnknowURLObject().then(message => {
+  return user.fetchUnknownURLObject().then(message => {
     return expect(message).toEqual('请求地址出错')
   })
 })

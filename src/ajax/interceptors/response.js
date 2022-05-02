@@ -53,12 +53,12 @@ module.exports = function (instance, config) {
     },
     function (err) {
       if (err) {
-        console.error(err.message)
+        console.error(err)
       }
 
       if (err && err.response) {
         var language = getLanguage(config.handlers && config.handlers.language)
-        var errMessage = language.msg[err.response.status] || 'unknow error'
+        var errMessage = language.msg[err.response.status] || 'unknown error'
         err.message = errMessage
       }
 

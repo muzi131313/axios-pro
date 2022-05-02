@@ -6,7 +6,7 @@ import user from './modules/user'
 
 import config from './config'
 
-const mappers = axiosPro.combine(
+const mappers = axiosPro.$combine(
   book,
   order,
   user

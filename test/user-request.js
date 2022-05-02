@@ -1,6 +1,5 @@
 import request from './request'
 import { WEB_URL } from './constant'
-import axios from 'axios'
 
 /**
  * @name getUsers
@@ -42,17 +41,18 @@ export function fetchUnknownURL() {
   })
 }
 
-export function fetchUnknowURLObject() {
+export function fetchUnknownURLObject() {
   return new Promise(resolve => {
     try {
-      axios.get('https://roastwind.com/axios-pro/404').then(resp => {
-        console.log(resp)
+      request.notExist(null, { baseURL: WEB_URL }).then(resp => {
+        resolve('请求地址出错')
+      }).catch(e => {
+        console.error('catch error>>: ' + e)
         resolve('请求地址出错')
       })
     }
     catch (e) {
-      console.log('catch error')
-      console.error(e)
+      console.error('catch error: ' + e)
       resolve('请求地址出错')
     }
   })

@@ -66,7 +66,7 @@
       import user from '@/api/modules/user'
       // ...
       // combine可以传一个或多个参数, 会合并每个modules的gets、posts、puts、dels、patches, heades值
-      const mappers = axiosPro.combine(
+      const mappers = axiosPro.$combine(
         org,
         seal
         // ...
@@ -246,9 +246,10 @@
   </details>
 - <details>
     <summary> in node environment</summary>
+
     ````javascript
     import axiosPro from 'axios-pro'
-    axiosPro.inject({
+    axiosPro.$inject({
       mappers: {
         gets: {
           getDetail: '/id/detail',
@@ -312,8 +313,10 @@
     }
     ````
   </details>
+
 - <details>
     <summary> in node environment </summary>
+
     ````javascript
     import axiosPro from 'axios-pro'
     init() {

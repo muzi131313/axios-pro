@@ -6,3 +6,8 @@
     > when set this value, should set `handlers.language` to `null`
 
     - set your own language option, like `src/language/en/index.js`
+
+### v1.1.0
+- remove `api` in export api
+  - change to
+  - all system own api start with  `$`, such as `axiosPro.$util`
