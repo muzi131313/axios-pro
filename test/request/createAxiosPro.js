@@ -11,7 +11,7 @@ let init = false
 export default function createAxiosPro() {
   if (!init) {
     init = true
-    axiosPro.inject(axiosProOption)
+    axiosPro.$inject(axiosProOption)
   }
   return axiosPro
 }

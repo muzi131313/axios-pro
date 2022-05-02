@@ -2,7 +2,7 @@ const user = {
   gets: {
     userList: '/users',
     userDetail: userId => `/user/${userId}`,
-    notExist: '/a/119000001778753x'
+    notExist: '/repos/kvimal/20481/issues'
   },
   posts: {
   },

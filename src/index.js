@@ -15,33 +15,33 @@ var utils = require('./utils')
 
 promiseFinally.shim()
 
-var getAxiosPro = function getAxiosPro() {
-  var axiosPro = {
-    api: {}
+var install = function (Vue, options) {
+  if (install.installed) {
+    return
   }
+  install.installed = true
 
-  var install = function (Vue, options) {
-    if (install.installed) {
-      return
-    }
-    install.installed = true
-
-    // TODO: 1.区分不同模块
-    // 注意哦，此处挂载在 Vue 原型的 $api 对象上
-    var api = httpPromise(options)
-    axiosPro.api = api
-    Vue.prototype.$api = api
-  }
-
-  // node environments
-  // 支持服务端使用
-  axiosPro.inject = function(options) {
-    axiosPro.api = httpPromise(options)
-  }
-
-  axiosPro.install = install
-  axiosPro.combine = utils.combine
-  return axiosPro
+  // TODO: 1.区分不同模块
+  // 注意哦，此处挂载在 Vue 原型的 $api 对象上
+  var api = httpPromise(options)
+  Object.assign(axiosPro, api)
+  Vue.prototype.$api = api
 }
 
-module.exports = getAxiosPro()
+// node environments
+// 支持服务端使用
+function inject(options) {
+  var nodeApi = httpPromise(options)
+  Object.assign(axiosPro, nodeApi)
+}
+
+var axiosPro = {
+  $install: install,
+  $inject: inject,
+  // old api support
+  $combine: utils.combine,
+  // could use new `axiosPro.$utils.xx` api for some tool function
+  $utils: utils
+}
+
+module.exports = axiosPro
