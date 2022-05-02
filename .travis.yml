@@ -1,7 +1,7 @@
 # doc: https://docs.travis-ci.com/user/deployment/npm#stq=&stp=0
 sudo: required
 language: node_js
-node_js: stable
+node_js: v14.18.1
 # 触发条件: master, 或v1.0.1提交tag
 branches:
   only:
