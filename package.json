@@ -1,7 +1,7 @@
 {
   "name": "axios-pro",
   "version": "1.0.45",
-  "description": "axios plugin, for the project normal uasge, such as mappers and handler(error, data(code), timeout) and so on",
+  "description": "axios plugin, for the project normal usage, such as mappers and handler(error, data(code), timeout) and so on",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext js",
@@ -11,7 +11,8 @@
     "test": "./node_modules/.bin/cross-env NODE_ENV=test jest",
     "coveralls": "npm run test && cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "postversion": "git push origin --tag",
-    "prepublishOnly": "node ./build/release.js"
+    "prepublishOnly": "node ./build/release.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
