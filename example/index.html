@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axios-pro demo</title>
+</head>
+<body>
+  <script src="../dist/axios.pro.js"></script>
+  <!-- <script src="../dist/axios.pro.min.js"></script> -->
+  <script>
+    // in window browser env by used cdn file;
+    // in es env, you can use like this: `import axiosPro from 'axios-pro'`
+    // usage by demo:
+    //  1. `npm install http-server -g`;
+    //  2. `http-server -p 8088`;
+    //  3. open in browser with link: `http://localhost:8088`
+    var axiosPro = window.axios.pro.min || window.axios.pro
+    console.log('[debug] axiosPro: ', axiosPro)
+    axiosPro.$inject({
+      mappers: {
+        gets: {
+          getDetail: id => `/user/${id}`,
+          users: '/users',
+        },
+      },
+      config: {
+        baseURL: 'https://www.fastmock.site/mock/0f72c52d87598d293dbeb907117c9c51/api',
+      }
+    });
+    async function detailTest() {
+      // only dynamic params use by like this
+      const resp =  await axiosPro.getDetail(null, null, 4);
+      console.log('[debug] user detail resp: ', resp)
+    }
+    detailTest();
+
+    async function detailUsers() {
+      const resp = await axiosPro.users();
+      console.log('[debug] users resp: ', resp)
+    }
+    detailUsers();
+  </script>
+</body>
+</html>
