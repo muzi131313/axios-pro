@@ -103,7 +103,7 @@
         namespaced: true,
         actions: {
           async getOrgs({ commit }, payload) {
-            const resp = await axiosPro.api.queryOrg({
+            const resp = await axiosPro.queryOrg({
               jsonConditions: {
                 op: 'or',
                 elements: [
@@ -320,7 +320,7 @@
     ````javascript
     import axiosPro from 'axios-pro'
     init() {
-      axiosPro.api.getDetail()
+      axiosPro.getDetail()
         .then(data => {
           // ...
         })
@@ -330,6 +330,43 @@
     }
     ````
   </details>
+
+- <details>
+    <summary> in cdn browser environment </summary>
+
+    ````html
+    <script src="../dist/axios.pro.js"></script>
+    <!-- <script src="../dist/axios.pro.min.js"></script> -->
+    ````
+
+    ````javascript
+    var axiosPro = window.axios.pro.min || window.axios.pro
+    console.log('[debug] axiosPro: ', axiosPro)
+    axiosPro.$inject({
+      mappers: {
+        gets: {
+          getDetail: id => `/user/${id}`,
+          users: '/users',
+        },
+      },
+      config: {
+        baseURL: 'https://www.fastmock.site/mock/0f72c52d87598d293dbeb907117c9c51/api',
+      }
+    });
+    async function detailTest() {
+      // only dynamic params use by like this
+      const resp =  await axiosPro.getDetail(null, null, 4);
+      console.log('[debug] user detail resp: ', resp)
+    }
+    detailTest();
+
+    async function detailUsers() {
+      const resp = await axiosPro.users();
+      console.log('[debug] users resp: ', resp)
+    }
+    detailUsers();
+    ````
+
 ## Q&S
 ### formdata传参
 - <details>
